@@ -8,7 +8,7 @@ btnStart.setAttribute('id','btnStart');
 let xByY;
 
 let btnStartText = document.createElement('p');
-btnStartText.textContent = "Change grid";
+btnStartText.textContent = "New grid";
 btnStart.appendChild(btnStartText);
 
 
@@ -17,8 +17,9 @@ btnStart.addEventListener('click', (e) => {
         container.removeChild(container.firstChild);
       }
       xByY = prompt("New Grid, choose between 16 and 100: ");
-      
-      newGrid(xByY);
+      if (xByY < 101){
+           newGrid(xByY);
+        }
 });
 
 

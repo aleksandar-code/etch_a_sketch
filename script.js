@@ -1,5 +1,14 @@
 let container = document.querySelector('#container');
 
+let btnStart = document.createElement('div');
+
+document.body.appendChild(btnStart);
+btnStart.setAttribute('id','btnStart');
+
+let btnStartText = document.createElement('p');
+btnStartText.textContent = "Change grid";
+btnStart.appendChild(btnStartText);
+
 
     for (i = 0; i < 16; i++) {
             let columnDiv = document.createElement('div');

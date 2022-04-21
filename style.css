@@ -26,3 +26,26 @@ div {
     
 }
 
+body {
+    display: flex;
+    gap: 20px;
+}
+#btnStart {
+    color: white;
+    font-weight: 200;
+    font-size: 50px;
+    background-color: blue;
+    text-align: center;
+    width: 200px;
+    flex: 0 0 auto;
+    border: none;
+    border-radius: 50%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+}

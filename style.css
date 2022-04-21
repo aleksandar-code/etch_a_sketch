@@ -10,7 +10,10 @@
     display: flex;
     flex-direction: column;
     flex: 0 0 auto;
-    border: none;
+    border: 20px solid black;
+    border-radius: 10px;
+    padding: 6px;
+    background-color: white;
 }
 div {
     border: 1px solid green;
@@ -22,12 +25,14 @@ div {
 
 #container div {
     display: flex;
+    border: 1px dotted darkgray;
     
 }
 
 body {
     display: flex;
     gap: 20px;
+    background-color: #fffb00;
 }
 #btnStart {
     color: white;

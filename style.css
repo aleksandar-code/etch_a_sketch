@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    width: 960px;
+    height: 960px;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+}
+div {
+    border: 1px solid green;
+    flex: 1 0 0;
+    height: auto;
+    width: auto;
+    flex-wrap: wrap;
+}
+
+#container div {
+    display: flex;
+    
+}
+

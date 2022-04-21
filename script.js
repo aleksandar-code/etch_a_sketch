@@ -10,6 +10,13 @@ btnStartText.textContent = "Change grid";
 btnStart.appendChild(btnStartText);
 
 
+btnStart.addEventListener('click', (e) => {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+      }
+})
+
+
     for (i = 0; i < 16; i++) {
             let columnDiv = document.createElement('div');
             container.appendChild(columnDiv);

@@ -2,7 +2,17 @@ let container = document.querySelector('#container');
 
 let btnStart = document.createElement('div');
 
-document.body.appendChild(btnStart);
+let colorChanged = 0;
+
+let newColor = 0;
+
+const btnContainer = document.createElement("div");
+
+btnContainer.style.cssText = "display: flex; flex-direction: column; border: none; justify-content:center; gap: 15px;"
+
+document.body.appendChild(btnContainer);
+
+btnContainer.appendChild(btnStart);
 btnStart.setAttribute('id','btnStart');
 
 let xByY;
@@ -40,8 +50,14 @@ container.addEventListener('mouseover', (e) => {
     if (e.target === container) {
         return;
     }
-    else
+    else if (newColor === 0) {
+
+    
     e.target.style.background = 'red';
+    }
+    else if (newColor === 1) {
+        e.target.style.background = 'blue';
+    }
 });
    
 
@@ -59,4 +75,38 @@ function newGrid (xy) {
         
     }
 }
+}
+
+
+let btnChangeColor = document.createElement('div');
+btnContainer.appendChild(btnChangeColor);
+
+let btnChangeColorText = document.createElement('p');
+btnChangeColorText.textContent = "Blue";
+btnChangeColor.appendChild(btnChangeColorText);
+
+btnChangeColor.setAttribute('id','btnChangeColor');
+
+btnChangeColor.addEventListener('click', changeColorBlue);
+
+function changeColorBlue(e) {
+    if (e)
+    newColor++;
+}
+
+let btnResetColor = document.createElement('div');
+btnContainer.appendChild(btnResetColor);
+
+let btnResetColorText = document.createElement('p');
+btnResetColorText.textContent = "Red";
+btnResetColor.appendChild(btnResetColorText);
+
+btnResetColor.setAttribute('id','btnResetColor');
+
+btnResetColor.addEventListener('click', resetColor);
+
+
+function resetColor(e) {
+    if (e)
+    newColor = 0;
 }

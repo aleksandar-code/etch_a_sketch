@@ -5,8 +5,8 @@
 }
 
 #container {
-    width: 960px;
-    height: 960px;
+    width: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     flex: 0 0 auto;
@@ -33,7 +33,7 @@ body {
     color: white;
     font-weight: 200;
     font-size: 50px;
-    background-color: blue;
+    background-color: black;
     text-align: center;
     width: 200px;
     flex: 0 0 auto;
@@ -47,4 +47,40 @@ body {
     justify-content: center;
 
 
+}
+
+#btnChangeColor {
+    color: white;
+    font-weight: 200;
+    font-size: 50px;
+    background-color: blue;
+    text-align: center;
+    width: 200px;
+    flex: 0 0 auto;
+    border: none;
+    border-radius: 50%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#btnResetColor {
+    color: white;
+    font-weight: 200;
+    font-size: 50px;
+    background-color: red;
+    text-align: center;
+    width: 200px;
+    flex: 0 0 auto;
+    border: none;
+    border-radius: 50%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

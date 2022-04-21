@@ -10,6 +10,8 @@
     display: flex;
     flex-direction: column;
     flex: 0 0 auto;
+    border-bottom: 0px;
+    border-right: 0px;
 }
 div {
     border: 1px solid green;

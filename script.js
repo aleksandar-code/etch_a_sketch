@@ -26,7 +26,7 @@ btnStart.addEventListener('click', (e) => {
     while (container.firstChild) {
         container.removeChild(container.firstChild);
       }
-      xByY = prompt("Choose grid size 2 to 50: ");
+      xByY = prompt("Choose grid size 2 to 100: ");
       if (xByY < 101){
            newGrid(xByY);
         }

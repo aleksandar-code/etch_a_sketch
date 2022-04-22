@@ -27,7 +27,7 @@ div {
 
 #container div {
     display: flex;
-    border: 1px dotted darkgray;
+    border: 1px solid #f7f7f7f7;
     
 }
 
@@ -121,6 +121,4 @@ body {
     justify-content: center;
 }
 
-.cells {
-    text-align: center;
-}
+

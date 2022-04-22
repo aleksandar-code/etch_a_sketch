@@ -4,7 +4,8 @@ let btnStart = document.createElement('div');
 
 let newColor = 0;
 
-let cells = document.querySelectorAll('.cells');
+let item;
+
 const btnContainer = document.createElement("div");
 
 btnContainer.style.cssText = "display: flex; flex-direction: row; border: none; justify-content:center; gap: 15px; flex:0;"
@@ -25,8 +26,8 @@ btnStart.addEventListener('click', (e) => {
     while (container.firstChild) {
         container.removeChild(container.firstChild);
       }
-      xByY = prompt("Choose grid size 2 to 100: ");
-      if (xByY < 101){
+      xByY = prompt("Choose grid size 2 to 50: ");
+      if (xByY < 51){
            newGrid(xByY);
         }
 });
@@ -42,28 +43,32 @@ btnResetGrid.appendChild(btnResetGridText);
 btnResetGrid.setAttribute('id','btnClearGrid');
 
 btnResetGrid.addEventListener('click', (e) => {
-    console.log(e);
-    for (let k = 0; k < cells.length ; k++) {
-        cells[k].style.background = 'white';
-    }
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+      }
+      newGrid(xByY);
+   
 });
 
-
+let rowDiv;
+let columnDiv;
     for (i = 0; i < xByY; i++) {
-            let columnDiv = document.createElement('div');
+            columnDiv = document.createElement('div');
             container.appendChild(columnDiv);
             columnDiv.style.border = "none";
+
         for (j = 0; j < xByY; j++) {
-            let rowDiv = document.createElement('div');
+            rowDiv = document.createElement('div');
             columnDiv.appendChild(rowDiv);
             rowDiv.style.borderTop = "0px";
             rowDiv.style.borderLeft = "0px";
-            rowDiv.setAttribute('class', 'cells');
-            cells = document.querySelectorAll('.cells');
+           
             
             
         }
     }
+    
+
 container.addEventListener('mouseover', (e) => {
     
     if (e.target === container) {
@@ -86,18 +91,19 @@ container.addEventListener('mouseover', (e) => {
 function newGrid (xy) {
     
     for (i = 0; i < xy; i++) {
-        let columnDiv = document.createElement('div');
+        columnDiv = document.createElement('div');
         container.appendChild(columnDiv);
         columnDiv.style.border = "none";
+
     for (j = 0; j < xy; j++) {
-        let rowDiv = document.createElement('div');
+        rowDiv = document.createElement('div');
         columnDiv.appendChild(rowDiv);
         rowDiv.style.borderTop = "0px";
         rowDiv.style.borderLeft = "0px";
-        rowDiv.setAttribute('class', 'cells');
-        cells = document.querySelectorAll('.cells');
+
     }
 }
+
 }
 
 
@@ -146,6 +152,7 @@ function resetColor(e) {
 function redColor(e) {
     if (e) newColor = 2;
 }
+
 
 
 

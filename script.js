@@ -2,23 +2,22 @@ let container = document.querySelector('#container');
 
 let btnStart = document.createElement('div');
 
-let colorChanged = 0;
-
 let newColor = 0;
 
+let cells = document.querySelectorAll('.cells');
 const btnContainer = document.createElement("div");
 
-btnContainer.style.cssText = "display: flex; flex-direction: column; border: none; justify-content:center; gap: 15px;"
+btnContainer.style.cssText = "display: flex; flex-direction: row; border: none; justify-content:center; gap: 15px; flex:0;"
 
 document.body.appendChild(btnContainer);
 
 btnContainer.appendChild(btnStart);
 btnStart.setAttribute('id','btnStart');
 
-let xByY;
+let xByY = 16;
 
 let btnStartText = document.createElement('p');
-btnStartText.textContent = "New grid";
+btnStartText.textContent = "New";
 btnStart.appendChild(btnStartText);
 
 
@@ -26,22 +25,42 @@ btnStart.addEventListener('click', (e) => {
     while (container.firstChild) {
         container.removeChild(container.firstChild);
       }
-      xByY = prompt("New Grid, choose between 16 and 100: ");
+      xByY = prompt("Choose grid size 2 to 100: ");
       if (xByY < 101){
            newGrid(xByY);
         }
 });
 
 
-    for (i = 0; i < 16; i++) {
+let btnResetGrid = document.createElement('div');
+btnContainer.appendChild(btnResetGrid);
+
+let btnResetGridText = document.createElement('p');
+btnResetGridText.textContent = "Clear";
+btnResetGrid.appendChild(btnResetGridText);
+
+btnResetGrid.setAttribute('id','btnClearGrid');
+
+btnResetGrid.addEventListener('click', (e) => {
+    console.log(e);
+    for (let k = 0; k < cells.length ; k++) {
+        cells[k].style.background = 'white';
+    }
+});
+
+
+    for (i = 0; i < xByY; i++) {
             let columnDiv = document.createElement('div');
             container.appendChild(columnDiv);
             columnDiv.style.border = "none";
-        for (j = 0; j < 16; j++) {
+        for (j = 0; j < xByY; j++) {
             let rowDiv = document.createElement('div');
             columnDiv.appendChild(rowDiv);
             rowDiv.style.borderTop = "0px";
             rowDiv.style.borderLeft = "0px";
+            rowDiv.setAttribute('class', 'cells');
+            cells = document.querySelectorAll('.cells');
+            
             
         }
     }
@@ -53,10 +72,13 @@ container.addEventListener('mouseover', (e) => {
     else if (newColor === 0) {
 
     
-    e.target.style.background = 'red';
+    e.target.style.background = 'black';
     }
     else if (newColor === 1) {
         e.target.style.background = 'blue';
+    }
+    else if (newColor === 2) {
+        e.target.style.background = 'red';
     }
 });
    
@@ -72,7 +94,8 @@ function newGrid (xy) {
         columnDiv.appendChild(rowDiv);
         rowDiv.style.borderTop = "0px";
         rowDiv.style.borderLeft = "0px";
-        
+        rowDiv.setAttribute('class', 'cells');
+        cells = document.querySelectorAll('.cells');
     }
 }
 }
@@ -89,9 +112,19 @@ btnChangeColor.setAttribute('id','btnChangeColor');
 
 btnChangeColor.addEventListener('click', changeColorBlue);
 
+let btnDefaultColor = document.createElement('div');
+btnContainer.appendChild(btnDefaultColor);
+
+let btnDefaultColorText = document.createElement('p');
+btnDefaultColorText.textContent = "Black";
+btnDefaultColor.appendChild(btnDefaultColorText);
+
+btnDefaultColor.setAttribute('id', 'btnDefaultColor');
+
+btnDefaultColor.addEventListener('click', resetColor)
 function changeColorBlue(e) {
     if (e)
-    newColor++;
+    newColor = 1;
 }
 
 let btnResetColor = document.createElement('div');
@@ -103,10 +136,16 @@ btnResetColor.appendChild(btnResetColorText);
 
 btnResetColor.setAttribute('id','btnResetColor');
 
-btnResetColor.addEventListener('click', resetColor);
+btnResetColor.addEventListener('click', redColor);
 
 
 function resetColor(e) {
     if (e)
     newColor = 0;
 }
+function redColor(e) {
+    if (e) newColor = 2;
+}
+
+
+

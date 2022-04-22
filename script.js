@@ -75,8 +75,6 @@ container.addEventListener('mouseover', (e) => {
         return;
     }
     else if (newColor === 0) {
-
-    
     e.target.style.background = 'black';
     }
     else if (newColor === 1) {
@@ -84,6 +82,10 @@ container.addEventListener('mouseover', (e) => {
     }
     else if (newColor === 2) {
         e.target.style.background = 'red';
+    }
+    else if (newColor === 3) {
+        e.target.style.background = 'white';
+
     }
 });
    
@@ -145,6 +147,22 @@ btnResetColor.setAttribute('id','btnResetColor');
 btnResetColor.addEventListener('click', redColor);
 
 
+
+
+
+let btnEraser = document.createElement('div');
+btnContainer.appendChild(btnEraser);
+
+let eraserText = document.createElement('p');
+eraserText.textContent = "Eraser";
+btnEraser.appendChild(eraserText);
+
+btnEraser.setAttribute('id','btnEraser');
+
+btnEraser.addEventListener('click', eraser);
+
+
+
 function resetColor(e) {
     if (e)
     newColor = 0;
@@ -153,6 +171,8 @@ function redColor(e) {
     if (e) newColor = 2;
 }
 
-
+function eraser(e) {
+    if (e) newColor = 3;
+}
 
 

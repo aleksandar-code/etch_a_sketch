@@ -36,8 +36,8 @@ body {
     gap: 5px;
     background-color: #fffb00;
     align-items: center;
-    height: 100vh;
-    justify-content: center;
+    width: 100vh;
+    margin: 0 auto;
     flex-direction: column;
 }
 #btnStart {

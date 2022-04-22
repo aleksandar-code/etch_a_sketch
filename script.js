@@ -8,7 +8,7 @@ let item;
 
 const btnContainer = document.createElement("div");
 
-btnContainer.style.cssText = "display: flex; flex-direction: row; border: none; justify-content:center; gap: 15px; flex:0;"
+btnContainer.style.cssText = "display: flex; flex-direction: row; border: none; justify-content:space-between; width:90vh; gap: 8px; flex:1 1 auto; height: 10vh; align-items: stretch;"
 
 document.body.appendChild(btnContainer);
 

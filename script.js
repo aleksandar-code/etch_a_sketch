@@ -1,22 +1,14 @@
+
 let container = document.querySelector('#container');
-
 let btnStart = document.createElement('div');
-
 let newColor = 0;
-
 let item;
-
 const btnContainer = document.createElement("div");
-
 btnContainer.style.cssText = "display: flex; flex-direction: row; border: none; justify-content:space-between; width:90vh; gap: 8px; flex:1 1 auto; height: 10vh; align-items: stretch;"
-
 document.body.appendChild(btnContainer);
-
 btnContainer.appendChild(btnStart);
 btnStart.setAttribute('id','btnStart');
-
 let xByY = 16;
-
 let btnStartText = document.createElement('p');
 btnStartText.textContent = "New";
 btnStart.appendChild(btnStartText);
@@ -32,16 +24,12 @@ btnStart.addEventListener('click', (e) => {
         }
 });
 
-
 let btnResetGrid = document.createElement('div');
 btnContainer.appendChild(btnResetGrid);
-
 let btnResetGridText = document.createElement('p');
 btnResetGridText.textContent = "Clear";
 btnResetGrid.appendChild(btnResetGridText);
-
 btnResetGrid.setAttribute('id','btnClearGrid');
-
 btnResetGrid.addEventListener('click', (e) => {
     while (container.firstChild) {
         container.removeChild(container.firstChild);
@@ -67,7 +55,6 @@ let columnDiv;
             
         }
     }
-    
 
 container.addEventListener('mouseover', (e) => {
     
@@ -88,7 +75,6 @@ container.addEventListener('mouseover', (e) => {
 
     }
 });
-   
 
 function newGrid (xy) {
     
@@ -108,16 +94,12 @@ function newGrid (xy) {
 
 }
 
-
 let btnChangeColor = document.createElement('div');
 btnContainer.appendChild(btnChangeColor);
-
 let btnChangeColorText = document.createElement('p');
 btnChangeColorText.textContent = "Blue";
 btnChangeColor.appendChild(btnChangeColorText);
-
 btnChangeColor.setAttribute('id','btnChangeColor');
-
 btnChangeColor.addEventListener('click', changeColorBlue);
 
 let btnDefaultColor = document.createElement('div');
@@ -137,18 +119,11 @@ function changeColorBlue(e) {
 
 let btnResetColor = document.createElement('div');
 btnContainer.appendChild(btnResetColor);
-
 let btnResetColorText = document.createElement('p');
 btnResetColorText.textContent = "Red";
 btnResetColor.appendChild(btnResetColorText);
-
 btnResetColor.setAttribute('id','btnResetColor');
-
 btnResetColor.addEventListener('click', redColor);
-
-
-
-
 
 let btnEraser = document.createElement('div');
 btnContainer.appendChild(btnEraser);
@@ -161,8 +136,6 @@ btnEraser.setAttribute('id','btnEraser');
 
 btnEraser.addEventListener('click', eraser);
 
-
-
 function resetColor(e) {
     if (e)
     newColor = 0;
@@ -174,5 +147,3 @@ function redColor(e) {
 function eraser(e) {
     if (e) newColor = 3;
 }
-
-

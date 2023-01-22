@@ -28,6 +28,8 @@ Move your cursor over the grid.
 
 Cannot have access to other colors.
 
+Scrollbar is visible, while it isn't supposed to be.
+
 ## Information
 
 Relatively fast project for me, what took more time was the UI design.

@@ -1,80 +1,75 @@
 let container = document.querySelector('#container');
-let btnStart = document.createElement('div');
-let newColor = 0;
+let currentColor = "#000000";
 let item;
-const btnContainer = document.createElement("div");
-btnContainer.style.cssText = "display: flex; flex-direction: row; border: none; justify-content:space-between; width:90vh; gap: 8px; flex:1 1 auto; height: 10vh; align-items: stretch;"
-document.body.appendChild(btnContainer);
-btnContainer.appendChild(btnStart);
-btnStart.setAttribute('id','btnStart');
 let xByY = 16;
-let btnStartText = document.createElement('p');
-btnStartText.textContent = "New";
-btnStart.appendChild(btnStartText);
+const colorPicker = document.getElementById('colorPicker');
+colorPicker.oninput = (e) => setCurrentColor(e.target.value)
 
-btnStart.addEventListener('click', (e) => {
-    while (container.firstChild) {
-        container.removeChild(container.firstChild);
-      }
-      xByY = prompt("Choose grid size 2 to 100: ");
-      if (xByY < 101 && xByY > 1){
-           newGrid(xByY);
-      }
-      else {
-        alert("You cannot change to that size! Size is set to default now.")
-        newGrid(16  );
-      }
+
+const sizeValue = document.getElementById('sizeValue')
+const sizeSlider = document.getElementById('sizeSlider')
+
+sizeSlider.onmousemove = (e) => updateSizeValue(e.target.value)
+sizeSlider.onchange = (e) => newGrid(e.target.value)
+
+
+function updateSizeValue(value) {
+  sizeValue.innerHTML = `${value} x ${value}`
+}
+
+function setCurrentColor(color) {
+    currentColor = color;
+}
+
+
+let btnClear = document.getElementById('clear');
+
+btnClear.addEventListener('click', (e) => {
+      newGrid();
 });
 
-let btnResetGrid = document.createElement('div');
-btnContainer.appendChild(btnResetGrid);
-let btnResetGridText = document.createElement('p');
-btnResetGridText.textContent = "Clear";
-btnResetGrid.appendChild(btnResetGridText);
-btnResetGrid.setAttribute('id','btnClearGrid');
+let btnEraser = document.getElementById('eraser');
 
-btnResetGrid.addEventListener('click', (e) => {
-    while (container.firstChild) {
-        container.removeChild(container.firstChild);
-      }
-      newGrid(xByY);
+btnEraser.addEventListener('click', (e) => {
+    currentColor = "white";
+});
+let btnColor = document.getElementById('color');
+
+btnColor.addEventListener('click', (e) => {
+    currentColor = colorPicker.value
 });
 
 let rowDiv;
 let columnDiv;
 
-    for (i = 0; i < xByY; i++) {
-            columnDiv = document.createElement('div');
-            container.appendChild(columnDiv);
-            columnDiv.style.border = "none";
+for (i = 0; i < xByY; i++) {
+    columnDiv = document.createElement('div');
+    container.appendChild(columnDiv);
+    columnDiv.style.border = "none";
 
-        for (j = 0; j < xByY; j++) {
-            rowDiv = document.createElement('div');
-            columnDiv.appendChild(rowDiv);
-            rowDiv.style.borderTop = "0px";
-            rowDiv.style.borderLeft = "0px";
-        }
+    for (j = 0; j < xByY; j++) {
+        rowDiv = document.createElement('div');
+        columnDiv.appendChild(rowDiv);
+        rowDiv.style.borderTop = "0px";
+        rowDiv.style.borderLeft = "0px";
     }
+}
 
 container.addEventListener('mouseover', (e) => {
     if (e.target === container) {
         return;
     }
-    else if (newColor === 0) {
-    e.target.style.background = 'black';
-    }
-    else if (newColor === 1) {
-        e.target.style.background = 'blue';
-    }
-    else if (newColor === 2) {
-        e.target.style.background = 'red';
-    }
-    else if (newColor === 3) {
-        e.target.style.background = 'white';
+    else {
+    e.target.style.background = currentColor;
     }
 });
 
-function newGrid (xy) {
+function newGrid() {
+    xy = sizeSlider.value;
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+
     for (i = 0; i < xy; i++) {
         columnDiv = document.createElement('div');
         container.appendChild(columnDiv);
@@ -87,51 +82,4 @@ function newGrid (xy) {
         rowDiv.style.borderLeft = "0px";
     }
 }
-}
-
-let btnChangeColor = document.createElement('div');
-btnContainer.appendChild(btnChangeColor);
-let btnChangeColorText = document.createElement('p');
-btnChangeColorText.textContent = "Blue";
-btnChangeColor.appendChild(btnChangeColorText);
-btnChangeColor.setAttribute('id','btnChangeColor');
-btnChangeColor.addEventListener('click', changeColorBlue);
-
-let btnDefaultColor = document.createElement('div');
-btnContainer.appendChild(btnDefaultColor);
-let btnDefaultColorText = document.createElement('p');
-btnDefaultColorText.textContent = "Black";
-btnDefaultColor.appendChild(btnDefaultColorText);
-btnDefaultColor.setAttribute('id', 'btnDefaultColor');
-btnDefaultColor.addEventListener('click', resetColor)
-
-let btnResetColor = document.createElement('div');
-btnContainer.appendChild(btnResetColor);
-let btnResetColorText = document.createElement('p');
-btnResetColorText.textContent = "Red";
-btnResetColor.appendChild(btnResetColorText);
-btnResetColor.setAttribute('id','btnResetColor');
-btnResetColor.addEventListener('click', redColor);
-
-let btnEraser = document.createElement('div');
-btnContainer.appendChild(btnEraser);
-let eraserText = document.createElement('p');
-eraserText.textContent = "Eraser";
-btnEraser.appendChild(eraserText);
-btnEraser.setAttribute('id','btnEraser');
-btnEraser.addEventListener('click', eraser);
-
-function changeColorBlue(e) {
-    if (e) newColor = 1;
-}
-
-function resetColor(e) {
-    if (e) newColor = 0;
-}
-function redColor(e) {
-    if (e) newColor = 2;
-}
-
-function eraser(e) {
-    if (e) newColor = 3;
 }

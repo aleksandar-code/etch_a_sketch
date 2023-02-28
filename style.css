@@ -5,137 +5,87 @@
     padding: 0;
 }
 
+#main {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    max-width: 902px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
 #container {
-    width: 90vh;
-    height: 90vh;
+    width: 70vh;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     flex: 0 0 auto;
-    border: 20px solid black;
-    border-radius: 6px;
-    padding: 6px;
-    background-color: white;
-    align-self: center;
-    
+    border: 1px solid black;
+    background-color: #ffffff;
 }
-div {
-    border: 1px solid green;
+
+
+div div div {
     flex: 1 0 0;
     height: auto;
     width: auto;
     flex-wrap: wrap;
 }
 
+
+
 #container div {
     display: flex;
-    border: 1px solid #f7f7f7f7;
-    
 }
 
-body {
-    display: flex;
-    gap: 5px;
-    background-color: #fffb00;
-    align-items: center;
-    width: 100vh;
-    margin: 0 auto;
-    flex-direction: column;
+#header {
+    padding: 30px 0;
 }
 
-#btnStart {
-    color: white;
-    font-weight: 900;
-    flex: 1;
-    background-color: blueviolet;
+#title {
+    font-size: 7rem;
+
     text-align: center;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border: 3px solid white;
-
-}
-
-#btnChangeColor {
-    color: white;
-    font-weight: 900;
-    border-radius: 10px;
-    padding: 10px;
-    border: 3px solid white;
-    background-color: blueviolet;
-    text-align: center;
-    font-size: 30px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#btnResetColor {
-    color: white;
-    font-weight: 900;
-    font-size: 30px;
-    background-color: blueviolet;
-    text-align: center;
-    border-radius: 10px;
-    padding: 10px;
-    border: 3px solid white;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#btnDefaultColor {
-    color: white;
-    font-weight: 900;
-    font-size: 30px;
-    background-color: blueviolet;
-    text-align: center;
-    border-radius: 10px;
-    padding: 10px;
-    border: 3px solid white;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#btnClearGrid {
-    color: white;
-    font-weight: 900;
-    font-size: 30px;
-    background-color: blueviolet;
-    text-align: center;
-    border-radius: 10px;
-    padding: 10px;
-    border: 3px solid white;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 
-#btnEraser {
-    color: white;
-    font-weight: 900;
-    font-size: 30px;
-    background-color: blueviolet;
-    text-align: center;
-    border-radius: 10px;
-    padding: 10px;
-    border: 3px solid white;
-    flex: 1;
+#settings {
     display: flex;
     flex-direction: column;
+    gap: 10px;
     align-items: center;
-    justify-content: center;
+}
+
+#settings button, input {
+    width: 129px;
+    height: 30px;
+}
+
+#sizeValue {
+    font-weight: bold;
+    margin-bottom: -10px;
+    margin-top: 20px;
+}
+
+input[type='color'] {
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: none;
+    padding: 2px;
+}
+
+button:focus {
+    background-color: black;
+    color: white;
+}
+
+button {
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #ffffff;
 }

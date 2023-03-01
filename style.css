@@ -121,3 +121,39 @@ button:hover, input:hover {
 button, input[type='color'] {
     transition: transform 0.1s ease-in-out;
 }
+
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1200px) {
+    #main {
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 850px) {
+    #main {
+        justify-content: center;
+    }
+  
+    #container {
+      width: 400px;
+      height: 400px;
+    }
+  }
+  
+  @media (max-width: 650px) {
+    #title {
+      font-size: 50px;
+    }
+  
+    #main {
+      flex-direction: column;
+    }
+  
+    #container {
+      width: 300px;
+      height: 300px;
+    }
+  }
+  

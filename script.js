@@ -9,6 +9,9 @@ let btnRainbow = document.getElementById('rainbow');
 let btnShader = document.getElementById('shader');
 let container = document.querySelector('#container');
 let currentColor = "#000000";
+const shaderSlider = document.getElementById('shaderSlider');
+const shaderValue = document.getElementById('shaderValue');
+shaderSlider.onmousemove = (e) => updateShaderValue(e.target.value)
 const colorPicker = document.getElementById('colorPicker');
 colorPicker.oninput = (e) => setCurrentColor(e.target.value)
 const sizeValue = document.getElementById('sizeValue')
@@ -31,7 +34,11 @@ function setCurrentMode(newMode) {
 }
 
 function updateSizeValue(value) {
-  sizeValue.innerHTML = `${value} x ${value}`
+    sizeValue.innerHTML = `${value} x ${value}`
+}
+
+function updateShaderValue(value) {
+    shaderValue.innerHTML = `Shade ${value}%`
 }
 
 function setCurrentColor(color) {
@@ -85,7 +92,7 @@ function getRandomNumber() {
 function getDarkerColor() {
     arrayHsl = hslColor.split(",",).reverse();
     let numberL = +arrayHsl[0].replace(/[^0-9.]+/g, '');
-    numberL -= shaderValue;
+    numberL -= shaderSlider.value;
 
     arrayHsl[0] = numberL + "%)";
 

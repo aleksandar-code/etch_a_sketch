@@ -19,7 +19,14 @@ const sizeValue = document.getElementById('sizeValue')
 const sizeSlider = document.getElementById('sizeSlider')
 sizeSlider.onmousemove = (e) => updateSizeValue(e.target.value)
 sizeSlider.onchange = (e) => newGrid(e.target.value)
-btnColor.onclick = () => setCurrentMode('color')
+btnColor.addEventListener('click', () => {
+  setCurrentColor(colorPicker.value)
+  setCurrentMode('color')
+});
+btnShader.addEventListener('click', () => {
+  setCurrentColor(colorPicker.value)
+  setCurrentMode('shader')
+});
 btnRainbow.onclick = () => setCurrentMode('rainbow')
 btnEraser.onclick = () => setCurrentMode('eraser')
 btnShader.onclick = () => setCurrentMode('shader')

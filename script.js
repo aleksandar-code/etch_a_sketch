@@ -1,7 +1,5 @@
 let container = document.querySelector('#container');
 let currentColor = "#000000";
-let item;
-let xByY = 16;
 const colorPicker = document.getElementById('colorPicker');
 colorPicker.oninput = (e) => setCurrentColor(e.target.value)
 
@@ -42,18 +40,6 @@ btnColor.addEventListener('click', (e) => {
 let rowDiv;
 let columnDiv;
 
-for (i = 0; i < xByY; i++) {
-    columnDiv = document.createElement('div');
-    container.appendChild(columnDiv);
-    columnDiv.style.border = "none";
-
-    for (j = 0; j < xByY; j++) {
-        rowDiv = document.createElement('div');
-        columnDiv.appendChild(rowDiv);
-        rowDiv.style.borderTop = "0px";
-        rowDiv.style.borderLeft = "0px";
-    }
-}
 
 container.addEventListener('mouseover', (e) => {
     if (e.target === container) {
@@ -63,6 +49,7 @@ container.addEventListener('mouseover', (e) => {
     e.target.style.background = currentColor;
     }
 });
+
 
 function newGrid() {
     xy = sizeSlider.value;
@@ -75,11 +62,12 @@ function newGrid() {
         container.appendChild(columnDiv);
         columnDiv.style.border = "none";
 
-    for (j = 0; j < xy; j++) {
-        rowDiv = document.createElement('div');
-        columnDiv.appendChild(rowDiv);
-        rowDiv.style.borderTop = "0px";
-        rowDiv.style.borderLeft = "0px";
+        for (j = 0; j < xy; j++) {
+            rowDiv = document.createElement('div');
+            columnDiv.appendChild(rowDiv);
+            rowDiv.style.borderTop = "0px";
+            rowDiv.style.borderLeft = "0px";
+        }
     }
 }
-}
+newGrid();

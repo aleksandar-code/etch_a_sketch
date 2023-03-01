@@ -12,6 +12,7 @@ let currentColor = "#000000";
 const shaderSlider = document.getElementById('shaderSlider');
 const shaderValue = document.getElementById('shaderValue');
 shaderSlider.onmousemove = (e) => updateShaderValue(e.target.value)
+shaderSlider.onchange = () => setCurrentColor(colorPicker.value)
 const colorPicker = document.getElementById('colorPicker');
 colorPicker.oninput = (e) => setCurrentColor(e.target.value)
 const sizeValue = document.getElementById('sizeValue')
@@ -79,7 +80,6 @@ function colorCell(e) {
 
         if (currentColor.split("")[0] === '#') hslColor = hexToHSL(currentColor);
         getDarkerColor()
-
         currentColor = hslColor;
         e.target.style.backgroundColor = currentColor;
     }
@@ -93,12 +93,8 @@ function getDarkerColor() {
     arrayHsl = hslColor.split(",",).reverse();
     let numberL = +arrayHsl[0].replace(/[^0-9.]+/g, '');
     numberL -= shaderSlider.value;
-
     arrayHsl[0] = numberL + "%)";
-
-
     hslColor = arrayHsl.reverse().join()
-    console.log(hslColor);
 }
 
 function hexToHSL(H) {

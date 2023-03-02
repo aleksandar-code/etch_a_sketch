@@ -9,6 +9,7 @@ let btnRainbow = document.getElementById('rainbow');
 let btnShader = document.getElementById('shader');
 let container = document.querySelector('#container');
 let currentColor = "#000000";
+let hslColor = "";
 const shaderSlider = document.getElementById('shaderSlider');
 const shaderValue = document.getElementById('shaderValue');
 shaderSlider.onmousemove = (e) => updateShaderValue(e.target.value)
@@ -72,8 +73,6 @@ function newGrid() {
         }
     }
 }
-
-let hslColor = "";
 
 function colorCell(e) {
     if (e.type === 'mouseover' && !mouseDown) return

@@ -10,7 +10,7 @@ Draw on <a href="https://aleksandar-code.github.io/etch_a_sketch/" rel="nofollow
 
 ## What it looks like
 
-![image](https://user-images.githubusercontent.com/83082486/213932083-61fb6bde-117d-4632-8a1e-853932305a41.png)
+![Screenshot_2023-04-19_13-08-14](https://user-images.githubusercontent.com/83082486/233057026-bd52e553-82b6-427c-ae40-ffa54add91e0.png)
 
 ## Features
 

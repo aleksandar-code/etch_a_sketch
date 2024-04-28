@@ -36,7 +36,4 @@ Relatively fast project for me, what took more time was the UI design.
 
 I didn't add a color picker because i wanted to keep it as simple as possible.
 
-## Contact
-
-<a href="https://twitter.com/aleksandar_code" rel="nofollow">@aleksandar_code</a>
 

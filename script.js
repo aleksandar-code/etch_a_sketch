@@ -38,6 +38,82 @@ container.addEventListener('mouseover', colorCell);
 container.addEventListener('mousedown', colorCell);
 
 
+
+// storage 
+
+function isStorageAvailable(type) {
+  let storage;
+  try {
+    storage = window[type];
+    const x = "__storage_test__";
+    storage.setItem(x, x);
+    storage.removeItem(x);
+    return true;
+  } catch (e) {
+    return (
+      e instanceof DOMException &&
+      // everything except Firefox
+      (e.code === 22 ||
+        // Firefox
+        e.code === 1014 ||
+        // test name field too, because code might not be present
+        // everything except Firefox
+        e.name === "QuotaExceededError" ||
+        // Firefox
+        e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
+      // acknowledge QuotaExceededError only if there's something already stored
+      storage &&
+      storage.length !== 0
+    );
+  }
+}
+
+function populateStorage(element) {
+  localStorage.setItem("Todolist", JSON.stringify(element));
+}
+
+function setStorage() {
+  const item = localStorage.getItem("Todolist");
+
+  return item;
+}
+
+function storageType(element = null) {
+  let toReturn;
+  if (!(Storage.length || element == null)) {
+    populateStorage(element);
+  } else {
+    toReturn = setStorage();
+  }
+  return toReturn;
+}
+
+function checkStorageAvailability() {
+  if (isStorageAvailable("localStorage") === true) {
+    return true;
+  }
+  return false;
+}
+
+
+if (checkStorageAvailability() === true) {
+  if (localStorage.length) {
+    // setLocaleStorage(); if there is storage then set it
+    // setLocaleStorageInDom(); set it in the dom
+    console.log("storage loaded")
+  }
+  console.log("storage function available");
+}
+else {
+  console.log("storage function not available")
+}
+
+function saveInLocaleStorage() {
+  if (checkStorageAvailability() === true) {
+    storageType(TodoList);
+  }
+}
+
 function setCurrentMode(newMode) {
     currentMode = newMode;
 }
@@ -52,6 +128,7 @@ function updateShaderValue(value) {
 
 function setCurrentColor(color) {
     currentColor = color;
+    console.log(currentColor)
 }
 
 function newGrid() {
@@ -81,7 +158,7 @@ function colorCell(e) {
     } else if (currentMode === 'color') {
       e.target.style.backgroundColor = currentColor
     } else if (currentMode === 'eraser') {
-      e.target.style.backgroundColor = '#fefefe'
+      e.target.style.backgroundColor = '#ffffff'
     } else if (currentMode === 'shader') {
 
         if (currentColor.split("")[0] === '#') hslColor = hexToHSL(currentColor);
@@ -89,6 +166,9 @@ function colorCell(e) {
         currentColor = hslColor;
         e.target.style.backgroundColor = currentColor;
     }
+
+    const myClone = document.querySelector('#container').cloneNode(true);
+    console.log(myClone);
 }
 
 function getRandomNumber() {
@@ -149,3 +229,5 @@ function hexToHSL(H) {
   }
 
 newGrid();
+
+

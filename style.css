@@ -15,6 +15,11 @@
     flex-wrap: wrap;
 }
 
+#clear {
+  color: white;
+  background-color: red;
+}
+
 #container {
     width: 600px;
     height: 600px;

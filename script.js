@@ -16,9 +16,15 @@ shaderSlider.onmousemove = (e) => updateShaderValue(e.target.value)
 shaderSlider.onchange = () => setCurrentColor(colorPicker.value)
 const colorPicker = document.getElementById('colorPicker');
 colorPicker.oninput = (e) => setCurrentColor(e.target.value)
+const saveButton = document.getElementById('save')
+saveButton.onclick = () => {
+  saveInLocaleStorage();
+}
 const sizeValue = document.getElementById('sizeValue')
 const sizeSlider = document.getElementById('sizeSlider')
-sizeSlider.onmousemove = (e) => updateSizeValue(e.target.value)
+sizeSlider.oninput = (e) => {
+  updateSizeValue(e.target.value)
+}
 sizeSlider.onchange = (e) => newGrid(e.target.value)
 btnColor.addEventListener('click', () => {
   setCurrentColor(colorPicker.value)
@@ -69,14 +75,12 @@ function isStorageAvailable(type) {
 }
 
 function populateStorage(element) {
-  console.log(element)
-  localStorage.setItem("Cells", JSON.stringify(element));
-}
-
-function setStorage() {
-  const item = localStorage.getItem("Cells");
-
-  return item;
+  let i = 0
+  element.forEach(cell => {
+    localStorage.setItem(i, cell.style.backgroundColor);
+    i++;
+  });
+  localStorage.setItem("size", sizeSlider.value)
 }
 
 function storageType(element = null) {
@@ -98,20 +102,20 @@ function checkStorageAvailability() {
 
 
 function setLocaleStorageInDom() {
-  const currentContainer = document.querySelector("#container")
-  // const projectList = TodoList.getProjectList();
-  console.log(currentContainer.firstChild.firstChild.style.backgroundColor)
-  console.log(JSON.parse(setStorage()))
-  const color = JSON.parse(setStorage())
-  currentContainer.firstChild.firstChild.style.backgroundColor = color
-  let i = 0
-  for (const row of currentContainer.children) {
-    console.log(row)
-    for (const cell of row.children) {
-      i++;
-      console.log(cell.style.backgroundColor, i)
+
+ 
+    sizeSlider.value = Number(localStorage.size)
+    updateSizeValue(sizeSlider.value)
+    newGrid()
+    const currentContainer = document.querySelector("#container")
+    let i = 0
+    for (const row of currentContainer.children) {
+      for (const cell of row.children) {
+        cell.style.backgroundColor = localStorage[i]
+        i++;
+      }
     }
-  }
+  
 }
 
 function saveInLocaleStorage() {
@@ -144,7 +148,6 @@ function updateShaderValue(value) {
 
 function setCurrentColor(color) {
     currentColor = color;
-    console.log(currentColor)
 }
 
 function newGrid() {
@@ -182,8 +185,6 @@ function colorCell(e) {
         currentColor = hslColor;
         e.target.style.backgroundColor = currentColor;
     }
-
-    saveInLocaleStorage();
 }
 
 function getRandomNumber() {
@@ -257,3 +258,5 @@ if (checkStorageAvailability() === true) {
 else {
   console.log("storage function not available")
 }
+
+setInterval(saveInLocaleStorage, 10000);

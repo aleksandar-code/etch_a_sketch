@@ -72,6 +72,10 @@ div div div {
     margin-top: 20px;
 }
 
+#save {
+  background-color: rgb(93, 246, 119);
+}
+
 input[type='color'] {
     width: 60px;
     height: 60px;

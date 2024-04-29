@@ -69,11 +69,12 @@ function isStorageAvailable(type) {
 }
 
 function populateStorage(element) {
-  localStorage.setItem("Todolist", JSON.stringify(element));
+  console.log(element)
+  localStorage.setItem("Cells", JSON.stringify(element.firstChild.firstChild.style.backgroundColor));
 }
 
 function setStorage() {
-  const item = localStorage.getItem("Todolist");
+  const item = localStorage.getItem("Cells");
 
   return item;
 }
@@ -96,23 +97,28 @@ function checkStorageAvailability() {
 }
 
 
-if (checkStorageAvailability() === true) {
-  if (localStorage.length) {
-    // setLocaleStorage(); if there is storage then set it
-    // setLocaleStorageInDom(); set it in the dom
-    console.log("storage loaded")
-  }
-  console.log("storage function available");
-}
-else {
-  console.log("storage function not available")
+function setLocaleStorageInDom() {
+  const currentContainer = document.querySelector("#container")
+  // const projectList = TodoList.getProjectList();
+  console.log(currentContainer.firstChild.firstChild.style.backgroundColor)
+  console.log(JSON.parse(setStorage()))
+  const color = JSON.parse(setStorage())
+  currentContainer.firstChild.firstChild.style.backgroundColor = color
+  // projectList.forEach((project) => {
+  //   const option = `<option data-project-uuid="${project.uuid}">${project.title}</option>`;
+  //   selection.innerHTML += option;
+  // });
 }
 
 function saveInLocaleStorage() {
   if (checkStorageAvailability() === true) {
-    storageType(TodoList);
+    const myClone = document.querySelector("#container").cloneNode(true);
+    console.log("saving in localeStorage")
+    storageType(myClone); // here we save the container html
   }
 }
+
+// etch a sketch
 
 function setCurrentMode(newMode) {
     currentMode = newMode;
@@ -167,8 +173,7 @@ function colorCell(e) {
         e.target.style.backgroundColor = currentColor;
     }
 
-    const myClone = document.querySelector('#container').cloneNode(true);
-    console.log(myClone);
+    saveInLocaleStorage();
 }
 
 function getRandomNumber() {
@@ -231,3 +236,14 @@ function hexToHSL(H) {
 newGrid();
 
 
+
+if (checkStorageAvailability() === true) {
+  if (localStorage.length) {
+    console.log("storage loaded")
+   setLocaleStorageInDom(); // set it in the dom
+  }
+  console.log("storage function available");
+}
+else {
+  console.log("storage function not available")
+}

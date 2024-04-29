@@ -70,7 +70,7 @@ function isStorageAvailable(type) {
 
 function populateStorage(element) {
   console.log(element)
-  localStorage.setItem("Cells", JSON.stringify(element.firstChild.firstChild.style.backgroundColor));
+  localStorage.setItem("Cells", JSON.stringify(element));
 }
 
 function setStorage() {
@@ -104,17 +104,27 @@ function setLocaleStorageInDom() {
   console.log(JSON.parse(setStorage()))
   const color = JSON.parse(setStorage())
   currentContainer.firstChild.firstChild.style.backgroundColor = color
-  // projectList.forEach((project) => {
-  //   const option = `<option data-project-uuid="${project.uuid}">${project.title}</option>`;
-  //   selection.innerHTML += option;
-  // });
+  let i = 0
+  for (const row of currentContainer.children) {
+    console.log(row)
+    for (const cell of row.children) {
+      i++;
+      console.log(cell.style.backgroundColor, i)
+    }
+  }
 }
 
 function saveInLocaleStorage() {
   if (checkStorageAvailability() === true) {
-    const myClone = document.querySelector("#container").cloneNode(true);
-    console.log("saving in localeStorage")
-    storageType(myClone); // here we save the container html
+    const currentContainer = document.querySelector("#container");
+    console.log("saving in localeStorage");
+    let arrayOfCells = [];
+    for (const row of currentContainer.children) {
+      for (const cell of row.children) {
+        arrayOfCells.push(cell)
+      }
+    }
+    storageType(arrayOfCells); // here we save the container html
   }
 }
 
